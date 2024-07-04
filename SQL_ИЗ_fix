@@ -1,0 +1,49 @@
+-- Создание таблицы с фамилиями
+create table last_name
+(
+id serial primary key,
+surname VARCHAR(25)
+);
+
+-- Создание таблицы с именами
+create table first_name
+(
+id serial primary key,
+name VARCHAR(25)
+);
+
+-- Создание таблицы с отчествами
+create table middle_name
+(
+id serial primary key,
+middle_name VARCHAR(25)
+);
+
+-- Внесение данных
+insert into last_name(surname)
+values
+('Иванов'),
+('Петров'),
+('Сидоров');
+
+insert into first_name(name)
+values
+('Иван'),
+('Петр'),
+('Сидор');
+
+
+insert into middle_name(middle_name)
+values
+('Иванович'),
+('Петрович'),
+('Сидорович');
+
+-- Запрос, возвращающий ФИО 
+select l.surname, f.name, m.middle_name
+from last_name as l
+join first_name as f 
+on l.id = f.id
+join middle_name as m
+on f.id = m.id
+order by 1 desc;
